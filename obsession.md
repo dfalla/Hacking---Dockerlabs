@@ -41,7 +41,16 @@ hydra -l russoski -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2 -t 4 -I
 ![alt text](image-2.png)
 
 
-## Intrusion y Escalar privilegios
+## Intrusion 
+
+entramos por ssh 
+
+ssh russoski@172.17.0.2
+
+escribimos la contraseña iloveme
+
+
+## Escalar privilegios
 
 ![alt text](image-3.png)
 
