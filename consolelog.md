@@ -55,7 +55,7 @@ lovely:x:1001:1001:lovely,,,:/home/lovely:/bin/bash
 
 ## Escalar privilegios
 
-![alt text](image-4.png)
+![alt text](image.png)
 
 
 
