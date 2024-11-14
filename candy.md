@@ -68,10 +68,7 @@ nos ponemos en escucha con nc
 
 encontramos un archivo otro_caramelo.txt en /var/backups/hidden
 
-# $db_host = 'localhost';
-# $db_user = 'luisillo';
-# $db_pass = 'luisillosuperpassword';
-# $db_name = 'joomla_db';
+![alt text](image-6.png)
 
 ## Escalar Privilegios
 
