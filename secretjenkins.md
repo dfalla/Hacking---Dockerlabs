@@ -17,6 +17,11 @@ sudo nmap -sVC --min-rate 6000 -p22,8080 -vvv -Pn 172.17.0.2
 gobuster dir -t 200 -u http://172.17.0.2:8080 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,bak,sh,py,js,html -r -b 403,404 2>/dev/null
 
 
+encontramos lo sisguiente:
+
+/cli                  (Status: 200)
+
+
 ### Descargando el cli
 
 ![alt text](image-3.png)
