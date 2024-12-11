@@ -1,52 +1,65 @@
-# Máquina Bashpariencias
+# Máquina cachopo
 
 ### Puertos abiertos
 
-sudo nmap -sS --min-rate 6000 -p- --open -vvv -Pn 172.18.0.2
+sudo nmap -sS --min-rate 6000 -p- --open -vvv -Pn 172.17.0.2
 
 ![alt text](image.png)
 
 ### Servicios y versiones
 
-sudo nmap -sVC --min-rate 6000 -p80,8899 -vvv -Pn 172.18.0.2
+sudo nmap -sVC --min-rate 6000 -p22,80 -vvv -Pn 172.17.0.2
 
 ![alt text](image-1.png)
 
-### Fuzzing Web
+### Entrando a la web
 
-gobuster dir -t 200 -u http://172.18.0.2/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,bak,sh,py,js,html -r -b 403,404 2>/dev/null
+Encontré un formulario
 
 ![alt text](image-2.png)
 
-entramos a /form.html y encontramos las credenciales de rosa por ssh:
+Lo que se me ocurrió fue interceptarlo con burpsuite al formulario.
 
 ![alt text](image-3.png)
 
-### Intrusión
-
-Me conecté por ssh con las credenciales de rosa:
+al interceptarlo lo mandé al repeater y me aparece el mensaje de error de la derecha, lo que significa que interpreta texto en base64.
 
 ![alt text](image-4.png)
 
-dentro de /home/rosa encontramos 2 archivos, uno llamado irresponsable.txt y otro llamado backup_rosa.zip
-
-irresponsable.txt contenía lo siguiente:
+le mandé el código de arriba:
 
 ![alt text](image-5.png)
 
-el archivo backup_rosa.zip lo pasé a mi máquina kali, mediante scp y apliqué ataque de contraseña ya que tenía contraseña el archivo .zip, al descomprimirlo me arrojó un archivo password.txt que era la contraseña de juan
+y efectivamente lee base64, entonces hice:
+
+para ver los usuarios:
 
 ![alt text](image-6.png)
 
-
-### Cambiando al usuario juan
-
-siendo el usuario juan, hice sudo -l, luego pasé al usuario carlos y luego escalé a root.
-
 ![alt text](image-7.png)
 
-### Escalar privilegios
+### Intrusión
+Como ya tenía el usuario cachopin, lo que hice fue hacer fuerza bruta con hydra al servicio ssh:
 
-siendo el usuario carlos, hice sudo -l
+hydra -l cachopin -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2 -t 64 -I
 
 ![alt text](image-8.png)
+
+Ingresamos por ssh con las credenciales encontradas:
+
+![alt text](image-9.png)
+
+### Escalar privilegios:
+
+En /home/cachopin/app/com/personal encontré hashes de SHA1, entonces utilicé la herramienta:
+
+https://github.com/PatxaSec/SHA_Decrypt
+
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+
+hice su root y ingresé la contraseña cecina:
+
+![alt text](image-12.png)
+
