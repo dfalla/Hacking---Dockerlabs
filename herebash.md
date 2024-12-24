@@ -28,3 +28,10 @@ descargamos la imagen y aplicamos esteganografía:
 
 ![alt text](image-4.png)
 
+### Intrusión
+
+ataque de fuerza bruta con hydra:
+
+![alt text](image-5.png)
+
+nos conectamos por ssh con las credenciales encontradas
