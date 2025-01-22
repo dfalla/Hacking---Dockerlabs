@@ -30,7 +30,7 @@ Al acceder a http://hackzones.hl/dashboard.hml
 
 me permite subir archivos php entonces subí una reverse shell que se guarda en uploads
 
-![alt text](image-5.png)
+![alt text](image-12.png)
 
 ### Escalar privilegios
 
